@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PT Tiga Amal Peradaban - Solusi Digital Terpadu</title>
+    
+    <!-- Menggunakan Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Konfigurasi Tema Warna Kustom -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            primary: '#265fff',   // Biru Utama
+                            yellow: '#ffc427',    // Kuning Secondary
+                            blue: '#50bbff',      // Biru Muda Secondary
+                            dark: '#1e4bd1',      // Versi lebih gelap dari primary untuk hover
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Menggunakan Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        /* Animasi berdenyut untuk tombol WA (disesuaikan dengan warna Primary) */
+        .pulse-animation {
+            box-shadow: 0 0 0 0 rgba(38, 95, 255, 1); /* Brand Primary */
+            transform: scale(1);
+            animation: pulse-blue 2s infinite;
+        }
+        @keyframes pulse-blue {
+            0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(38, 95, 255, 0.7);
+            }
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 15px rgba(38, 95, 255, 0);
+            }
+            100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(38, 95, 255, 0);
+            }
+        }
+        
+        /* Utility untuk gradasi teks */
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(to right, #265fff, #50bbff);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- NAVIGASI / HEADER -->
+    <nav class="bg-white fixed w-full z-50 shadow-sm transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-2">
+                    <!-- Placeholder Logo (Gunakan Logo PT Tiga Amal Peradaban di sini) -->
+                    <div class="flex items-center gap-2">
+                        <img src="https://blogger.googleusercontent.com/img/a/AVvXsEgm2NgunaAbFRLozjsmpDgcWSFe5ciRxLcqV84qVJ4xFqvWDEi8vyCcnt9uj7nl3UHZLnQBx51p5AHV2_Ud11lvi64iYoQbaIMy6PcWsNIr_Ow6IMnImWi7zEkemZhTgwcJlajsO6e2XjhEAFKqcRzAbdlnvdTRprtZ3cTVyyyZLA_K__itIIgg9AQXpgI" alt="Logo" class="h-10 w-auto">
+                        <span class="font-bold text-xl text-gray-900 tracking-tight">Tiga Amal <span class="text-brand-primary">Peradaban</span></span>
+                    </div>
+                </div>
+
+                <!-- Menu Desktop -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#home" class="text-gray-600 hover:text-brand-primary font-medium transition">Beranda</a>
+                    <a href="#layanan" class="text-gray-600 hover:text-brand-primary font-medium transition">Layanan</a>
+                    <a href="#portfolio" class="text-gray-600 hover:text-brand-primary font-medium transition">Produk</a>
+                    <a href="#galeri" class="text-gray-600 hover:text-brand-primary font-medium transition">Galeri</a>
+                    <a href="#tentang" class="text-gray-600 hover:text-brand-primary font-medium transition">Tentang Kami</a>
+                    <a href="https://wa.me/6285224131324" class="bg-brand-primary text-white px-5 py-2.5 rounded-full font-semibold hover:bg-brand-dark transition shadow-lg hover:shadow-brand-primary/30">
+                        Hubungi Kami
+                    </a>
+                </div>
+
+                <!-- Tombol Hamburger Mobile -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-brand-primary focus:outline-none p-2">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu Mobile (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
+            <div class="px-4 pt-2 pb-6 space-y-2 shadow-lg">
+                <a href="#home" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-primary hover:bg-gray-50">Beranda</a>
+                <a href="#layanan" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-primary hover:bg-gray-50">Layanan</a>
+                <a href="#portfolio" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-primary hover:bg-gray-50">Produk</a>
+                <a href="#galeri" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-primary hover:bg-gray-50">Galeri</a>
+                <a href="#tentang" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-primary hover:bg-gray-50">Tentang Kami</a>
+                <a href="https://wa.me/6285224131324" class="block mt-4 text-center bg-brand-primary text-white px-5 py-3 rounded-lg font-bold hover:bg-brand-dark">
+                    <i class="fab fa-whatsapp mr-2"></i> Chat Sekarang
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Teks Hero -->
+                <div class="z-10 order-2 lg:order-1">
+                    <span class="inline-block py-1 px-3 rounded-full bg-brand-blue/10 text-brand-primary text-sm font-semibold mb-4 border border-brand-blue/20">
+                        Solusi Digital Kreatif & Edukatif
+                    </span>
+                    <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-6">
+                        Bangun Aplikasi, 3D, VR Simulator & Game Edukasi <span class="text-gradient">Impian Anda</span>
+                    </h1>
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed max-w-lg">
+                        <strong>PT. Tiga Amal Peradaban</strong> membantu institusi dan lembaga untuk bertransformasi digital melalui Website Profesional, Aplikasi Mobile, dan Game Edukasi Interaktif.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#layanan" class="px-8 py-4 bg-brand-primary text-white rounded-lg font-semibold text-center hover:bg-brand-dark transition shadow-lg hover:shadow-brand-primary/30">
+                            Lihat Layanan
+                        </a>
+                        <a href="#portfolio" class="px-8 py-4 bg-white text-brand-primary border border-brand-primary rounded-lg font-semibold text-center hover:bg-blue-50 transition">
+                            Lihat Karya Kami
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Gambar Hero -->
+                <div class="relative order-1 lg:order-2">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white transform rotate-2 hover:rotate-0 transition duration-500">
+                        <!-- GANTI GAMBAR DI SINI: Gambar Utama (Hero Image) -->
+                        <img src="https://blogger.googleusercontent.com/img/a/AVvXsEg3CsSsIlwypPjpa_rk4UXFbOhiA_tB1kuPY1ye4OCPVdjichUYdwdwurJed3o8HZsRWhiMMTCdyY-6SHXABzSNGqDk6ZQ0lRSM5qiL4HgExslxyrh1sBFg4N5PjkqR6GNVqOTrNVMvpfrtmJj2qxDGOrDdMCSb7TVGbQ-q9g0GbQVMrsOsGgmUkkc9MfU" alt="Tim Tiga Amal Peradaban Bekerja" class="w-full h-auto object-cover">
+                        
+                        <!-- Floating Badge -->
+                        <div class="absolute bottom-6 left-6 bg-white/90 backdrop-blur p-4 rounded-xl shadow-lg border border-gray-100 hidden sm:block">
+                            <div class="flex items-center gap-3">
+                                <div class="bg-brand-yellow/20 p-2 rounded-full text-brand-primary">
+                                    <i class="fas fa-check-circle text-xl text-brand-yellow"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-500">Layanan Prima</p>
+                                    <p class="font-bold text-gray-900">100+ Klien Puas</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Dekorasi Background dengan Warna Baru -->
+                    <div class="absolute -z-10 top-0 -right-10 w-72 h-72 bg-brand-blue rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+                    <div class="absolute -z-10 -bottom-10 -left-10 w-72 h-72 bg-brand-yellow rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LAYANAN KAMI -->
+    <section id="layanan" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Layanan Unggulan</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Kami menyediakan solusi teknologi end-to-end untuk kebutuhan digital branding dan edukasi Anda.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1: Website -->
+                <div class="bg-gray-50 rounded-2xl p-8 hover:-translate-y-2 transition duration-300 border border-gray-100 shadow-sm hover:shadow-xl group">
+                    <div class="w-14 h-14 bg-brand-blue/20 text-brand-primary rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-primary group-hover:text-white transition">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Pembuatan Website</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Mulai dari Landing Page, Company Profile, hingga Toko Online yang responsif, cepat, dan user-friendly.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-500 mb-6">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-yellow"></i> Desain Modern</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-yellow"></i> Mobile Web Friendly</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-yellow"></i> Set up Domain & Hosting</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-yellow"></i> Direct Payment Method</li>
+                    </ul>
+                </div>
+
+                <!-- Card 2: Aplikasi Mobile -->
+                <div class="bg-gray-50 rounded-2xl p-8 hover:-translate-y-2 transition duration-300 border border-gray-100 shadow-sm hover:shadow-xl group">
+                    <div class="w-14 h-14 bg-brand-yellow/20 text-yellow-600 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-yellow group-hover:text-white transition">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Mobile Web, Android dan iOS</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Pengembangan aplikasi berbasis web untuk bisnis, startup, atau sistem manajemen internal perusahaan.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-500 mb-6">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-primary"></i> UI/UX User Friendly</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-primary"></i> Performa Maksimal</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-primary"></i> Dashboard CMS Dinamis</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-primary"></i> Integrasi API Pihak Ketiga</li>
+                    </ul>
+                </div>
+
+                <!-- Card 3: Game Edukasi -->
+                <div class="bg-gray-50 rounded-2xl p-8 hover:-translate-y-2 transition duration-300 border border-gray-100 shadow-sm hover:shadow-xl group">
+                    <div class="w-14 h-14 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-purple-600 group-hover:text-white transition">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">3D, VR, dan Game Edukasi</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Media pembelajaran interaktif berbasis game untuk sekolah, instansi, atau kampanye sosial yang menyenangkan.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-500 mb-6">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-blue"></i> Interaktif & Seru</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-blue"></i> Berbasis Web</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-blue"></i> Integrasi AR dan VR</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-blue"></i> Aset Konten Visual Terbaru</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO SECTION -->
+    <section id="portfolio" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Karya Terbaru Kami</h2>
+                <p class="text-gray-600">Beberapa project yang telah kami selesaikan dengan bangga.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Portfolio Item 1 -->
+                <a href="https://barokahpasir.com/" target="_blank" class="block group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer">
+                    <!-- GANTI GAMBAR DI SINI: Screenshot Project 1 -->
+                    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEi9yPqy1F-lvTOTEDDE6LyfI4AaG6GknKTZcgluheQ1aWlVRUshCcuxiWsbLUI0aOG3pJV0-bIHXbvijWZklQFyU2ztihxcPUKNrSGzgv2A6ABqYcP1Usrhst3dpfDMCddasXKFyR-8QpC5n9piQV76U_a4MmLVYjwSvGAO7eB_a-573E5HJt4-bCXc1jE" alt="Project Website" class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <div>
+                            <span class="text-brand-yellow text-sm font-semibold">Web Development</span>
+                            <h4 class="text-white text-xl font-bold">UD. Barokah Cilegon</h4>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Portfolio Item 2 -->
+                <a href="https://aktifin.com/product" target="_blank" class="block group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer">
+                    <!-- GANTI GAMBAR DI SINI: Screenshot Project 2 -->
+                    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEjCtzvttFsqHbCcqNc9D5nnEIWBo3SKJbm3ZbdGnwjtM7GN6xmbY7GbfmqlqwLBifGgzPGmBuupw3KdtOV2bM4pPq6xSuAkJPXPBuIBZcaTrcpHp7GdLX8dHc5aVCiUnEqsqckiE7don7obRM4KoqGtt7iUK6_8MSXwnAxHE00nzYaSG1yA9VQ_oZobexM" alt="Project Apps" class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <div>
+                            <span class="text-brand-yellow text-sm font-semibold">Aplikasi Mobile Web</span>
+                            <h4 class="text-white text-xl font-bold">Laporan Aktivitas Siswa</h4>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Portfolio Item 3 -->
+                <a href="http://vnurslab.com/" target="_blank" class="block group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer">
+                    <!-- GANTI GAMBAR DI SINI: Screenshot Project 3 -->
+                    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEgsL1f0-TFpWcWH-8r7ggxJCtZldV-IXaaq4RG4SGOKlaSyBZkwcTBQ81ExWKHOevP4a0c099VHxFOWW8yZgHYtIBLmo5gyd76j2ZhrLsrvxnxr4rsr7aPyZW6NSzK6HwI0nXxJBz-gk1HMg8ndWl2NYa7-co6s_5jSObBVlVa082RSHFiEQ9MxWZjGTO4" alt="Project Game" class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <div>
+                            <span class="text-brand-yellow text-sm font-semibold">3D Simulator</span>
+                            <h4 class="text-white text-xl font-bold">Laboratorium Kesehatan Virtual</h4>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Portfolio Item 4 -->
+                <a href="http://warungmasakin.com/" target="_blank" class="block group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer">
+                    <!-- GANTI GAMBAR DI SINI: Screenshot Project 3 -->
+                    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEgKN3OFra73q5PviwQHObfVzhqL5ykpuarYJrKr4FJEZ1uHHX7fVjsm4jVNTSAw06wo01K8DVPVA_JDgZnNDuN5igJusx9Wlw5mFYDKoq0xkbzs-j5HDE2G1GJ3e44ASD6kSTWBb9pfS4X4ID3fOAtHAXTwfUh3YnXSQg0NjL6LznuHwzI7_7Xg05ZEdK0" alt="Project Game" class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <div>
+                            <span class="text-brand-yellow text-sm font-semibold">Marketplace</span>
+                            <h4 class="text-white text-xl font-bold">Warung Masakin</h4>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Portfolio Item 5 -->
+                <a href="https://hadirin.org/" target="_blank" class="block group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer">
+                    <!-- GANTI GAMBAR DI SINI: Screenshot Project 3 -->
+                    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEgtpkQEZW_dlnWCGofXKHW9K3caLRhCxTjNKOHVTUHQCs5v2hG8Ty2pKIlx6jGCK1KXrmtPOxn4bnkmU2k50xvZMi4PVJVIBVKBpELNQkQ1QxZiGag02KNcUAPHOsrORprVpfqhtAIOm3_BKif7SgQEAB_e2MInxB5B2Rbc9h92ti1HYJl4tn-owI5UKFU" alt="Project Game" class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <div>
+                            <span class="text-brand-yellow text-sm font-semibold">Aplikasi Kehadiran</span>
+                            <h4 class="text-white text-xl font-bold">Hadirin</h4>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Portfolio Item 6 -->
+                <a href="https://virtualmanasik.com/" target="_blank" class="block group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer">
+                    <!-- GANTI GAMBAR DI SINI: Screenshot Project 3 -->
+                    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEin5DEJLapVc1XhyZtYX1cNo1JXKnWW38mYc22FCMULyXob-g0bdax1qiGNa9yxGOZZ42I0oYdXCEt8U2MN-9JJp_oBODamsjDMxdZOGQlYr3_nim8NW0rQvbKbiYjEBvoow3wcGOevHoyMB5WVY0hmZJ-e7k_BDMgwVj3LgyPRTaxbOIHKoHTcqFDFm_w" alt="Project Game" class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <div>
+                            <span class="text-brand-yellow text-sm font-semibold">VR Edukasi</span>
+                            <h4 class="text-white text-xl font-bold">Virtual Manasik</h4>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERI SECTION -->
+    <section id="galeri" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Galeri Kegiatan</h2>
+                <p class="text-gray-600">Dokumentasi aktivitas dan momen berharga tim kami.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Gallery Item 1 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer">
+                    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEizCda4Kq3_Taza7zmN4gTzcTgLAzVWmR0gUW6szfZvZf7OnN3EsvUMPBoKx56n00BdLfzMK8dIY2p4QBjZ0XNcH5Gj5Q5cRyQ1iJyC0FX0SsnQ5wxVQlKC2hdag0H4CMZR0HFk1b1SaeAtpzZZuPI7KD9JBfi093vrSma6NFDpQAVNzFpD3dLvEq3q4w0" alt="Meeting Tim" class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <p class="text-white font-medium">Kantor PT Tiga Amal Peradaban</p>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 2 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer">
+                    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEjKl-iSH2eRnZ7pFLZisTOs3jqGJRlvzi4Fiyt5cqqERaJpLaSfe2xS0Jl-BQ7TmfMrkINO8MLTe8oQw10eEOnT3jVGdvi9ZZaeBPyARIQTXgYRlWXmlQpBlF5mw2W9l9DR3nMs9TcDhNI11rbARUKIVut7pG0Zw6LLc_P4aIVdhjKEJbxEmpvkvgbG5e8" alt="Presentasi" class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <p class="text-white font-medium">Presentasi Klien</p>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 3 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer">
+                    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhmTCMfUITXPaPYTmTyLWpcO1AaPWUk02ha12M0OavDT0E1Y7mluItEZiZTS9dFL9o_6ttF-MUR8qvSEUqw2c8BCXPLs9WPmTbGhh2ouJqAk9UjLO0gdlnWouzKYoS5NTyXZOEpGIE9TWlm-L_TxDB7ZsWimucwFFKpUVvSlRwT3b8AyBXZvJJVBjimhBo" alt="Workshop" class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <p class="text-white font-medium">Showing 3D Manasik</p>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 4 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer">
+                    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEi2ESfj265yGvwFX0QIhrwnynkraqXO2lFnA4QFneja1OnVQ5gVmYAYHKFh60-Yz-taf7sI4DtQeFEi53QV7-USl_z6NuzEiFyO3r0IG5nopEEA9X15pwNE3-OlUH0R2BIHMKroFpLGzyeY0YE6TDUSv3y4usM3ZUCWEO4VudskXfSxU53SR-zrUEHd8Ns" alt="Workshop" class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <p class="text-white font-medium">Penggunaan VR dengan Quest</p>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 5 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer">
+                    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhQSqrtG0G29grLSbYgP4P7YEeMu7GMJoAPJO5vPz3L9BCfw6Br-u3k8znKJX0-tsX8KhPP1wjR0HAaptAPQoRkkJ-EvNQRiSQ5_y7BfKOOGuXfK_qulWhSQKaFpcL65i68RcNAl7faXSaILyZPmCJJ1s7J4oILC1Kufj8ZhJrF0PWThp4e9eXk1CwfYIM" alt="Workshop" class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <p class="text-white font-medium">Kolaborasi Proyek Digitalisasi Umroh</p>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 6 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer">
+                    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEgUVGH8qzFYO6_sJf5l-otk3zwsEEuR1HQmvIoMlRdcJ4o1d0DF4rTnoSB2eqZgZHEbeEbUVtF9q3Qs-AgggmQsdGij-Cul-0Xh6vbDg23oVGg7SuGSGTLSUxvp3vNaKaPSakPi1bhOKvNAWw-ZZSeb5arnKfxwegLtk7FrEV070VCfLevQ5kzKgAg93hE" alt="Workshop" class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <p class="text-white font-medium">Webinar Interactive Virtual Class</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KENAPA KAMI (Why Choose Us) -->
+    <section id="tentang" class="py-20 bg-brand-primary text-white relative overflow-hidden">
+        <!-- Decoration Circles -->
+        <div class="absolute top-0 left-0 w-64 h-64 bg-white rounded-full mix-blend-overlay filter blur-3xl opacity-20 -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 right-0 w-80 h-80 bg-brand-yellow rounded-full mix-blend-multiply filter blur-3xl opacity-40 translate-x-1/3 translate-y-1/3"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-3xl lg:text-4xl font-bold mb-6">Mitra Digital Terpercaya Anda</h2>
+                    <p class="text-blue-100 text-lg mb-8 leading-relaxed">
+                        Kami tidak hanya membuat kode, kami membangun solusi. Di <strong>PT Tiga Amal Peradaban</strong>, setiap piksel dan logika program dirancang untuk mencapai tujuan bisnis Anda.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-rocket text-xl text-brand-yellow"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-2">Pengerjaan Cepat & Tepat</h4>
+                                <p class="text-blue-100 text-sm">Deadline adalah janji. Kami bekerja efisien tanpa mengurangi kualitas.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-headset text-xl text-brand-yellow"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-2">Support Prioritas</h4>
+                                <p class="text-blue-100 text-sm">Kami siap membantu maintenance dan perbaikan teknis pasca peluncuran.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white/10 p-8 rounded-2xl border border-white/20 backdrop-blur-sm shadow-2xl">
+                    <h3 class="text-2xl font-bold mb-6">Mulai Konsultasi Gratis</h3>
+                    <form class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-blue-100 mb-1">Nama</label>
+                            <input type="text" class="w-full px-4 py-3 rounded-lg bg-black/20 border border-white/30 focus:border-brand-yellow focus:outline-none text-white placeholder-blue-200/50" placeholder="Nama Anda">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-blue-100 mb-1">Kebutuhan</label>
+                            <select class="w-full px-4 py-3 rounded-lg bg-black/20 border border-white/30 focus:border-brand-yellow focus:outline-none text-white">
+                                <option class="text-gray-800">Pembuatan Website</option>
+                                <option class="text-gray-800">Aplikasi Mobile Web</option>
+                                <option class="text-gray-800">Game Edukasi</option>
+                                <option class="text-gray-800">Lainnya</option>
+                            </select>
+                        </div>
+                        <button type="button" onclick="window.location.href='https://wa.me/6285224131324'" class="w-full py-3 bg-brand-yellow text-gray-900 font-bold rounded-lg hover:bg-yellow-400 transition shadow-lg">
+                            Kirim Pesan via WhatsApp
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-gray-400 py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <!-- Kolom 1: Brand & Medsos -->
+                <div class="col-span-1 md:col-span-2">
+                    <div class="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+                        <img src="https://blogger.googleusercontent.com/img/a/AVvXsEgm2NgunaAbFRLozjsmpDgcWSFe5ciRxLcqV84qVJ4xFqvWDEi8vyCcnt9uj7nl3UHZLnQBx51p5AHV2_Ud11lvi64iYoQbaIMy6PcWsNIr_Ow6IMnImWi7zEkemZhTgwcJlajsO6e2XjhEAFKqcRzAbdlnvdTRprtZ3cTVyyyZLA_K__itIIgg9AQXpgI" alt="Logo" class="h-10 w-auto bg-white rounded p-1">
+                        <span>Tiga Amal Peradaban</span>
+                    </div>
+                    <p class="max-w-xs mb-6 text-gray-400">Jasa pembuatan website, aplikasi, dan game edukasi berbasis Android, iOS, 3D Model, atau VR terpercaya untuk semua kebutuhan digitalisasi Anda.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-primary hover:text-white transition group">
+                            <i class="fab fa-instagram text-xl group-hover:text-white"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-primary hover:text-white transition group">
+                            <i class="fab fa-facebook-f text-lg group-hover:text-white"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-primary hover:text-white transition group">
+                            <i class="fab fa-linkedin-in text-lg group-hover:text-white"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-primary hover:text-white transition group">
+                            <i class="fab fa-youtube text-lg group-hover:text-white"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Kolom 2: Layanan -->
+                <div>
+                    <h4 class="text-white font-bold mb-4 text-lg">Layanan</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#layanan" class="hover:text-brand-yellow transition flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-gray-600"></i> Web Development</a></li>
+                        <li><a href="#layanan" class="hover:text-brand-yellow transition flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-gray-600"></i> Mobile Web Apps</a></li>
+                        <li><a href="#layanan" class="hover:text-brand-yellow transition flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-gray-600"></i> Game Edukasi</a></li>
+                        <li><a href="#layanan" class="hover:text-brand-yellow transition flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-gray-600"></i> UI/UX Design</a></li>
+                    </ul>
+                </div>
+
+                <!-- Kolom 3: Kontak -->
+                <div>
+                    <h4 class="text-white font-bold mb-4 text-lg">Hubungi Kami</h4>
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 w-8 h-8 rounded bg-gray-800 flex items-center justify-center flex-shrink-0 text-brand-primary">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <span>Ruko Kota Kembang Permai Kavling No.3 - Jl. Jakarta Sebelah GOR KONI - Bandung</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded bg-gray-800 flex items-center justify-center flex-shrink-0 text-brand-primary">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <a href="https://wa.me/6285224131324" class="hover:text-brand-yellow transition">+62 852 2413 1324</a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded bg-gray-800 flex items-center justify-center flex-shrink-0 text-brand-primary">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <a href="mailto:support@tigaamal.com" class="hover:text-brand-yellow transition">support@tigaamal.com</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center text-sm text-gray-500">
+                &copy; 2025 PT Tiga Amal Peradaban. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- FLOATING WHATSAPP BUTTON -->
+    <a href="https://wa.me/6285224131324?text=Halo%20PT%20Tiga%20Amal%20Peradaban,%20saya%20ingin%20konsultasi%20tentang..." 
+       target="_blank"
+       class="fixed bottom-6 right-6 bg-brand-primary text-white p-4 rounded-full shadow-2xl z-50 hover:bg-brand-dark transition duration-300 flex items-center gap-2 group pulse-animation">
+        <i class="fab fa-whatsapp text-3xl"></i>
+        <span class="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-500 ease-in-out font-bold">
+            Chat via WA
+        </span>
+    </a>
+
+    <!-- JAVASCRIPT UNTUK MOBILE MENU -->
+    <script>
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const icon = btn.querySelector('i');
+        const navbar = document.getElementById('navbar');
+
+        // Toggle Hamburger Menu
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            
+            // Ubah icon hamburger ke silang (X)
+            if(menu.classList.contains('hidden')){
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            }
+        });
+
+        // Menutup menu saat link diklik (untuk UX yang lebih baik)
+        menu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+
+        // Efek shadow pada navbar saat scroll
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                navbar.classList.add('shadow-md');
+            } else {
+                navbar.classList.remove('shadow-md');
+            }
+        });
+    </script>
+</body>
+</html>
